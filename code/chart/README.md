@@ -6,7 +6,9 @@ This directory contains the Helm configuration for deploying the Gitea stack (Gi
 
 - **`helmfile.yaml.gotmpl`**: definition of the releases.
 - **`localhelm.sh`**: Wrapper script to help with secret management and deployment.
+- **`port-forward.sh`**: Utility to forward local ports to the cluster services.
 - **`values/`**: Value overrides for the charts.
+- **`rendered.yaml`**: (Optional) Output verification file often used for debugging `helmfile template`. This file is gitignored.
 
 ## Deployment
 
@@ -45,3 +47,19 @@ For subsequent runs, if the secrets are already in the `gitea` namespace, you ca
 ./localhelm.sh sync
 ```
 The script will fetch the existing passwords from the Kubernetes secrets and pass them to helmfile.
+
+## Access & Debugging
+
+### Port Forwarding
+
+To access the services locally without configuring Ingress, you can use the `port-forward.sh` script:
+
+```bash
+./port-forward.sh
+```
+
+This will forward the following ports from `localhost` to the `gitea` namespace:
+- **3000**: Gitea HTTP
+- **2222**: Gitea SSH
+- **5432**: PostgreSQL
+- **6379**: Redis

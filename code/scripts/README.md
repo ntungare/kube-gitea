@@ -10,6 +10,9 @@ The scripts implement a security model where:
 
 This allows you to safely store encrypted configuration files (`encrypted_payload.json`) and the encrypted AES key (`aes256.key.wrap`) in the repository, while keeping the RSA Private Key secret (and password protected).
 
+> [!NOTE]
+> The primary purpose of this setup is to ensure that when you run `make-backup.sh` from the root directory, the generated backup archive contains your secrets in an encrypted format, avoiding plaintext password storage.
+
 ## Directories
 
 - **`src/`**: TypeScript source code.
@@ -26,6 +29,10 @@ Install dependencies:
 ```bash
 pnpm install
 ```
+
+## Configuration Schema
+
+The scripts expect a `code/config.yml` file (which is ignored by git) relative to the project root. This file should contain the secrets you wish to encrypt. The only expectation is that the file is a `yaml` file.
 
 ## Detailed Usage
 
