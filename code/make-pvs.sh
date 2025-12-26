@@ -2,8 +2,8 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-export GITEA_DATA_DIR=$(realpath "$DIR/../personal-git-storage/storage/gitea")
-export POSTGRES_DATA_DIR=$(realpath "$DIR/../personal-git-storage/storage/postgresql")
+export GITEA_DATA_DIR=$(realpath "$DIR/../storage/gitea")
+export POSTGRES_DATA_DIR=$(realpath "$DIR/../storage/postgresql")
 
 echo $GITEA_DATA_DIR
 echo $POSTGRES_DATA_DIR
