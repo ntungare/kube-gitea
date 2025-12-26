@@ -1,0 +1,10 @@
+# General OS and Editor files (optional, can be added globally)
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# custom
+code/config.yml
+backups/
+storage/

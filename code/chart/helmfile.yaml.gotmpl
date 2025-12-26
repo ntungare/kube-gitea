@@ -1,0 +1,38 @@
+repositories:
+  - name: gitea
+    url: https://dl.gitea.com/charts
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: postgresql
+    chart: bitnami/postgresql
+    version: 18.2.0
+    namespace: gitea
+    createNamespace: true
+    set:
+      - name: global.postgresql.auth.password
+        value: '{{ requiredEnv "GITEA_PASSWORD" }}'
+      - name: global.postgresql.auth.postgresPassword
+        value: '{{ requiredEnv "POSTGRES_PASSWORD" }}'
+    values:
+      - values/postgresql.yaml
+
+  - name: redis
+    chart: bitnami/redis
+    version: 24.1.0
+    namespace: gitea
+    createNamespace: true
+    values:
+      - values/redis.yaml
+
+  - name: gitea
+    chart: gitea/gitea
+    version: 12.4.0
+    namespace: gitea
+    createNamespace: true
+    needs:
+      - gitea/postgresql
+      - gitea/redis
+    values:
+      - values/gitea.yaml

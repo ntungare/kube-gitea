@@ -1,0 +1,13 @@
+version: v1.2.3
+dependencies:
+  - name: gitea
+    repository: https://dl.gitea.com/charts
+    version: 12.4.0
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 18.2.0
+  - name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 24.1.0
+digest: sha256:2c52141c83e843e09c020c32928e950b60f1e66f6a57e528d76975bfae2da01c
+generated: "2025-12-26T14:15:01.907161+05:30"

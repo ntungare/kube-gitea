@@ -1,0 +1,14 @@
+auth:
+  database: gitea
+  username: gitea
+  usePasswordFiles: false
+
+primary:
+  persistence:
+    enabled: true
+    existingClaim: postgresql-pvc
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
